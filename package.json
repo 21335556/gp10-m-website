@@ -20,7 +20,8 @@
     "gulp-webserver": "^0.9.1",
     "http-proxy-middleware": "^0.20.0",
     "node-sass": "^4.13.0",
-    "webpack-stream": "^5.2.1"
+    "webpack-stream": "^5.2.1",
+    "yo3": "^3.1.10"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
