@@ -4,6 +4,7 @@ const gulpWebserver = require('gulp-webserver')
 const webpackStream = require('webpack-stream')
 const path = require('path')
 const gulpSass = require('gulp-sass')
+const del = require('del')
 const proxy = require('http-proxy-middleware')     //代理模块
 
 
@@ -34,6 +35,7 @@ function copyhtml() {
 function webserver() {
   return src('./dev/')
   .pipe( gulpWebserver({
+    host:'localhost',
     port: 8080,
     livereload : true,
     middleware: [           //代理
@@ -42,6 +44,13 @@ function webserver() {
         changeOrigin: true,     // 解决访问域名不同，配置 布尔
         pathRewrite: {
           '^/api' : ''
+        }
+      }),
+      // 自己做出接口
+      proxy('/json',{
+        target: 'http://localhost:9000',
+        pathRewrite: {
+          '^/json': ''
         }
       })
     ]
@@ -72,7 +81,11 @@ function packjs() {
             loader: 'babel-loader',       //控制es6 es8 
             options: {
               presets: ['@babel/preset-env'],
-              plugins: ['@babel/plugin-transform-runtime']
+              plugins: [['@babel/plugin-transform-runtime',{
+                'helpers': false,
+                "regenerator": true
+              }
+              ]]
             }
           }
         },
@@ -110,27 +123,4 @@ function watcher() {
 }
 
 
-exports.default = series(parallel(packjs,packCSS,copyLibs,copyimages,copyicons),copyhtml,webserver,watcher)    //node中的私有作用域
-
-
-
-// 启动server
-// gulp.task('webserver',() => {
-//   return gulp.src('./dev/')
-//   .pipe( gulpWebserver({
-//     port: 8080,
-//     livereload : true
-//   }) )
-// })
-
-// 任务的回调一定要有返回值，返回值全部都是一部操作
-// 如果不返回值，需要调用一个callback
-// gulp.task('copyhtml',() => {
-//   return gulp.src('./index.html')
-//   .pipe(gulp.dest('./dev/'))
-// })
-  
-// gulp.task('default', gulp.series('copyhtml','webserver'))
-// 私有任务和公有任务 公有任务需要在exports显示的定义
-// exports.webserver = series(webserver)
-
+exports.default = series(parallel(packjs,packCSS,copyLibs,copyimages,copyicons),copyhtml,webserver,watcher);    //node中的私有作用域

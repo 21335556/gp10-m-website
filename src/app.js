@@ -1,5 +1,16 @@
-const indexTpl = require('./views/index.html')
+import posController from './controllers/position'
 
-const renderedIndexTpl = template.render(indexTpl, {})
+// const getData = async function () {
+//   renderList(await loadData())
+// }
 
-$('#app').html(renderedIndexTpl)
+// getData()
+
+posController.renderList()
+
+// import name from './controllers/name'
+
+
+// const name = require('./controllers/name')
+
+// name.test()

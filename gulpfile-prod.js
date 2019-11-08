@@ -5,7 +5,7 @@ const path = require('path')
 const gulpSass = require('gulp-sass')
 const rev = require('gulp-rev')
 const revCollector = require('gulp-rev-collector')
-
+const cleanCss = require('gulp-clean-css'); 
 
 // 移动libs中不需要压缩或其他操作的文件
 function copyLibs() {
@@ -80,13 +80,11 @@ function revColl() {
 function packCSS() {
   return src('./src/styles/app.scss')
   .pipe( gulpSass().on('error',gulpSass.logError) )   //on方法 当sass文件出现错误会抛出
+  .pipe(cleanCss({compatibility: 'ie8'}))
   .pipe(rev())
   .pipe( dest('./dist/styles') )
   .pipe( rev.manifest() )
   .pipe( dest('./rev/styles') )
 }
 
-
 exports.default = series(parallel(packjs,packCSS,copyLibs,copyimages,copyicons),copyhtml,revColl)    //node中的私有作用域
-
-
