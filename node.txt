@@ -1,0 +1,41 @@
+布局方案
+方案1： 100%布局，流式布局 (高度固定，宽度自适应)
+1、控件弹性
+2、图片等比例 缩放
+3、文字流式
+特点： 设备显示越大，显示内容越多
+方案二：REM布局 等比缩放布局 (整个页面等比缩放)
+获取当前设备尺寸  vw , vh 
+1vw = 当前设备屏幕宽度的 1%
+
+
+
+"mock" : "json-server ./src/mock/mock.js -r './src/mock/router.json' -p 9000"
+
+
+art-template
+http://aui.github.io/art-template/docs/api.html
+
+
+insomnia
+
+iscroll
+
+better-scroll  注意事项：
+1、区域滚动必须有一个滚动的容器
+2、容器的高度小于内容的高度
+3、保证容器内有一个唯一的子元素
+
+HTTP methods
+
+1xx : 正在发送
+
+2xx: 成功
+
+3xx: 请求转发
+
+4xx: 客户端错误
+
+5xx: 服务器错误
+
+jQuery  $.ajax 返回一个Promise

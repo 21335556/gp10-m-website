@@ -21,10 +21,13 @@
   main {
     flex: 1;
     overflow-y: auto;
-    >div {
+    .swiper-container, .swiper-wrapper,.swiper-slide{
+      height: 100%;
+    }
+    div#index-scroll {
       .head, 
       .foot {
-        @include flexbox();
+        display: flex;
         align-items: center;
         justify-content: center;
         height: .4rem;
@@ -47,7 +50,7 @@
         transform: rotate(180deg);
       }
       
-      > div:nth-child(2) {   //保证first必须是第一个div
+      > div div:nth-child(2) {   //保证first必须是第一个div
         height: .44rem;
         background: #fff;
         padding: 0 .15rem;
@@ -69,7 +72,7 @@
           color: #00b38a;
         }
       }
-      > ul {
+      ul#position-list {
         li {
           display: flex;
           padding: .14rem;
@@ -82,6 +85,10 @@
           > div.item-desc {
             flex: 1;
             padding-left: 0.1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            border:0;
             h2 {
               @include contentFont(16px);
               margin-bottom: 0.06rem;

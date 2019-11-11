@@ -1,4 +1,4 @@
-i
+
 
 module.exports = function getData() {
   return $.ajax({

@@ -1,0 +1,28 @@
+.m-search {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: scroll;
+  div.banner {
+    font-size: 0;
+    height: 0;
+    margin-bottom: 43.29%;
+    img {
+      width: 100%;
+    }
+  }
+  div.list {
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      height: 100%;
+      overflow-y: scroll;
+    }
+    li {
+      width: 50%;
+    }
+      img {
+        width: 100%;
+      }
+  }
+}
