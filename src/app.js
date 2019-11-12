@@ -1,16 +1,11 @@
 import posController from './controllers/position'
+import { router } from './router/hash'
 
-// const getData = async function () {
-//   renderList(await loadData())
-// }
+const indexTpl = require('./views/index.html')
+let renderedIndexTpl = template.render(indexTpl)
+$('#app').html(renderedIndexTpl) 
 
-// getData()
 
 posController.renderList()
 
-// import name from './controllers/name'
-
-
-// const name = require('./controllers/name')
-
-// name.test()
+router.init()
