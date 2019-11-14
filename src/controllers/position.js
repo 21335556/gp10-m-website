@@ -1,4 +1,4 @@
-
+const positionTpl = require('../views/position.html')
 const positionListTpl = require('../views/position.list.html')
 const BScroll = require('better-scroll').default
 
@@ -8,17 +8,11 @@ let positionList = []
 let currentPage = 1
 
 // 拿出接口数据
-  const renderList = async () => {
-    // const getData = async () => {
-    //   await fetch.get('/api/listmore.json?pageNo=1&pageSize=15')
-    //   let data = result.content.data.page.result
-    //   let renderedIndexTpl = template.render(indexTpl, { data })
-    //   $('#app').html(renderedIndexTpl)
-    // }
-    // getData()
-
+  const render = async () => {
     let result = await fetch.get('/api/listmore.json?pageNo=1&pageSize=15')
     let data = positionList = result.content.data.page.result
+    
+    $('main').html(positionTpl)
     
     let renderedpositionListTpl = template.render(positionListTpl, { data })
     $('#position-list').html(renderedpositionListTpl)
@@ -106,5 +100,5 @@ let currentPage = 1
   }
 
   export default {
-    renderList
+    render
   }

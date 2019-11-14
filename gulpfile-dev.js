@@ -78,15 +78,7 @@ function packjs() {
           test : /\.js$/,
           exclude: /node_modules/,
           use: {
-            loader: 'babel-loader',       //控制es6 es8 
-            options: {
-              presets: ['@babel/preset-env'],
-              plugins: [['@babel/plugin-transform-runtime',{
-                'helpers': false,
-                "regenerator": true
-              }
-              ]]
-            }
+            loader: 'babel-loader'       //控制es6 es8 
           }
         },
         {

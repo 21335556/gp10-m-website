@@ -20,7 +20,7 @@
   }
   main {
     flex: 1;
-    overflow-y: auto;
+    overflow: hidden;
     > div {
       .head, 
       .foot {
@@ -47,7 +47,7 @@
         transform: rotate(180deg);
       }
       
-      div:nth-child(2) {   //保证first必须是第一个div
+      > div:nth-child(2) {   //保证first必须是第一个div
         height: .44rem;
         background: #fff;
         padding: 0 .15rem;

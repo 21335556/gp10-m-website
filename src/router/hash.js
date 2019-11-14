@@ -1,18 +1,19 @@
 const router = {
   renderView() {
     let hash = location.hash;
-    // console.log(hash);
     switch(hash) {
-      case '#position':
-        $('main').html('positoin')
+      case '#/position':
+        $('main').html('position')
         break;
-      case '#search':
+      case '#/search':
         $('main').html('search')
         break;
-      case '#profile':
+      case '#/profile':
         $('main').html('profile')
         break;
     }
+
+    $(`nav a[href='${hash}']`).closest('li').addClass('active').siblings().removeClass('active')
   },
 
   init() {
