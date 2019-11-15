@@ -1,5 +1,5 @@
-const indexTpl = require('./views/index.html')
+import Router from './router/'
 
-const renderedIndexTpl = template.render(indexTpl, {})
-
-$('#app').html(renderedIndexTpl)
+new Router({
+  mode: 'hash'   //hash | history
+})
