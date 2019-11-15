@@ -1,11 +1,19 @@
 const positionTpl = require('../views/position.html')
 const positionListTpl = require('../views/position.list.html')
 const BScroll = require('better-scroll').default
+import Router from '../router/'
 
 import fetch from '../models/fetch'
 
 let positionList = []
 let currentPage = 1
+
+
+const gotoPage = (id) => {
+  let router = new Router( {mode:'hash'} );
+  router.push('/index/details?id='+id);
+}
+
 
 // 拿出接口数据
   const render = async () => {
@@ -17,8 +25,10 @@ let currentPage = 1
     let renderedpositionListTpl = template.render(positionListTpl, { data })
     $('#position-list').html(renderedpositionListTpl)
 
+    //Better scroll 实例化
     let bScroll = new BScroll('#index-scroll', {
-      probeType: 1
+      probeType: 1,
+      click:true
     })
 
     let head = $('.head img'),
@@ -96,7 +106,10 @@ let currentPage = 1
       }
     })
 
-    
+    $('#position-list').on('click', 'li', function(e) {
+      let id = $(this).attr('data-id')
+      gotoPage(id);
+    })
   }
 
   export default {

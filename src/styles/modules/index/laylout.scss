@@ -1,22 +1,23 @@
-@import '../icons';
-@import '../../font-size.scss';
+@import '../common/icons';
+@import '../common/font-size.scss';
+@import '../common/header.scss';
 
 
 #app {
   height: 100%;
 }
 
+#index {
+  height: 100%;
+}
+
+
 .container {
   height: 100%;
   display: flex;
   flex-direction: column;
   header {
-    height:.44rem;
-    background: #00b38a;
-    font-size: .15rem;
-    color: #fff;
-    line-height: .44rem;
-    text-align: center;
+   @extend %header;
   }
   main {
     flex: 1;
