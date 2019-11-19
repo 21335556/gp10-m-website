@@ -1,4 +1,5 @@
 import index from '../controllers/index'
+import error from '../controllers/error'
 import home from '../controllers/home'
 import position from '../controllers/position'
 import search from '../controllers/search'
@@ -7,13 +8,14 @@ import details from '../controllers/details'
 // import { homedir } from 'os';
 
 export default class Router {
-  constructor(obj) {
+  constructor(obj) {    //生命周期
     this.mode = obj.mode
     // this.mode = 'history'
     // 路由配置
     this.routes = {
       '/index': index,
       '/index/home': home,
+      '/index/error': error, 
       '/index/details': details, 
       '/index/home/position': position,
       '/index/home/search': search,
@@ -158,12 +160,12 @@ export default class Router {
    */
   errorPage() {
     if (this.mode === 'hash') {
-      location.href = '#/error'
+      location.href = '#/index/error'
     } else {
       history.replaceState({
-        path: '/error'
-      }, null, '/error')
-      this.loadView('/error')
+        path: '/index/errprerror'
+      }, null, '/index/error')
+      this.loadView('/index/error')
     }
   }
   /**

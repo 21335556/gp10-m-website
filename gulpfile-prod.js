@@ -25,7 +25,7 @@ function copyicons() {
 
 // 复制index.html文件
 function copyhtml() {
-  return src('./index.html')
+  return src('./*.html')
   .pipe(dest('./dist/'))
 }
 
@@ -37,7 +37,9 @@ function packjs() {
     // mode: 'production',        //自动压缩js
     
     entry: {      //字符串，数组，对象
-      app: './src/app.js'
+      app: ['./src/app.js'],
+      'app-search': ['./src/app-search.js'],
+      'app-profile': ['./src/app-profile.js']
     },
     output: {
       filename: '[name].js',    //[name] == app
@@ -78,7 +80,7 @@ function revColl() {
 
 // 编译CSS模块  转译sass
 function packCSS() {
-  return src('./src/styles/app.scss')
+  return src('./src/styles/*.scss')
   .pipe( gulpSass().on('error',gulpSass.logError) )   //on方法 当sass文件出现错误会抛出
   .pipe(cleanCss({compatibility: 'ie8'}))
   .pipe(rev())

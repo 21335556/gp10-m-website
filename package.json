@@ -5,6 +5,8 @@
   "main": "gulpfile.js",
   "dependencies": {
     "better-scroll": "^1.15.2",
+    "browser-sync": "^2.26.7",
+    "global": "^4.4.0",
     "gulp": "^4.0.2",
     "gulp-clean-css": "^4.2.0",
     "gulp-rev": "^9.0.0",
