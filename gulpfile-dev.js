@@ -27,7 +27,7 @@ function copyicons() {
 
 // 复制index.html文件
 function copyhtml() {
-  return src('./index.html')
+  return src('./*.html')
   .pipe(dest('./dev/'))
 }
 
@@ -93,7 +93,7 @@ function packjs() {
 
 // 编译CSS模块  转译sass
 function packCSS() {
-  return src('./src/styles/app.scss')
+  return src('./src/styles/*.scss')
   .pipe( gulpSass().on('error',gulpSass.logError) )   //on方法 当sass文件出现错误会抛出
   .pipe( dest('./dev/styles') )
 }

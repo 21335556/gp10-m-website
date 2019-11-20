@@ -4,6 +4,7 @@
   "description": "",
   "main": "gulpfile.js",
   "dependencies": {
+    "animate.css": "^3.7.2",
     "better-scroll": "^1.15.2",
     "gulp": "^4.0.2",
     "gulp-clean-css": "^4.2.0",

@@ -25,7 +25,7 @@ function copyicons() {
 
 // 复制index.html文件
 function copyhtml() {
-  return src('./index.html')
+  return src('./*.html')
   .pipe(dest('./dist/'))
 }
 

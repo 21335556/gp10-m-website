@@ -39,3 +39,8 @@ HTTP methods
 5xx: 服务器错误
 
 jQuery  $.ajax 返回一个Promise
+
+R —> Router 路由
+M —> Model 数据
+V —> View 视图
+C —> Controller 控制器（逻辑）
