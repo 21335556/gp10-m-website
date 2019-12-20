@@ -36,7 +36,7 @@ function webserver() {
   return src('./dev/')
   .pipe( gulpWebserver({
     host:'localhost',
-    port: 8080,
+    port: 8090,
     livereload : true,
     middleware: [           //代理
       proxy('/api', {     //代理到指定网页    api作为标记 一起拿到指定的网址上
