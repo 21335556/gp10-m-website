@@ -5,7 +5,13 @@ import position from '../controllers/position'
 import search from '../controllers/search'
 import profile from '../controllers/profile'
 import details from '../controllers/details'
-// import { homedir } from 'os';
+
+var socket = io.connect('http://localhost:8088');
+
+socket.on('message', function(msg){
+  // console.log(0)
+  position.render()
+})
 
 export default class Router {
   constructor(obj) {    //生命周期
@@ -27,6 +33,7 @@ export default class Router {
     this.navList = $('nav a')
     this.init()
   }
+
   init() {
     index.render()
     if (this.mode === 'hash') {
@@ -38,6 +45,7 @@ export default class Router {
       window.addEventListener('popstate', this.historyRefresh.bind(this));
     }
   }
+
   /**
    * history模式劫持 a链接
    */
@@ -48,6 +56,7 @@ export default class Router {
    * history 处理a链接
    * @param  e 当前对象Event
    */
+
   handleLink(e) {
     // 阻止默认
     e.preventDefault();
@@ -70,6 +79,7 @@ export default class Router {
    * hash路由刷新执行
    * @param {object} e 
    */
+
   hashRefresh(e) {
     // console.log(e);
     if (e.newURL) {
@@ -88,6 +98,7 @@ export default class Router {
    * history模式刷新页面
    * @param  e  当前对象Event
    */
+  
   historyRefresh(e) {
     const state = e.state || {}
     const path = state.path.split('?')[0] || null
