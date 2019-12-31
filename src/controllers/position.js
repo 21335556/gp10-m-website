@@ -17,8 +17,8 @@ const gotoPage = (id) => {
 
 // 拿出接口数据
   const render = async () => {
-    let result = await fetch.get('/api/listmore.json?pageNo=1&pageSize=15')
-    let data = positionList = result.content.data.page.result
+    let result = await fetch.get('/fe/api/position/find?page=0&pagesize=10')
+    let data = positionList = result.data.result
     
     $('main').html(positionTpl)
     
@@ -71,8 +71,8 @@ const gotoPage = (id) => {
         head.attr('src', '/images/ajax-loader.gif')
 
         // 异步加载数据
-        let result = await fetch.get(`/api/listmore.json?pageNo=2&pageSize=8`)
-        let data = positionList = [...result.content.data.page.result, ...positionList]
+        let result = await fetch.get(`/fe/api/position/find?page=2&pagesize=2`)
+        let data = positionList = [...result.data.result, ...positionList]
         let renderedpositionListTpl = template.render(positionListTpl, { data })
         $('#position-list').html(renderedpositionListTpl)
         
@@ -92,8 +92,8 @@ const gotoPage = (id) => {
         foot.attr('src', '/images/ajax-loader.gif');
 
         // 异步加载数据
-        let result = await fetch.get(`/api/listmore.json?pageNo=${++currentPage}&pageSize=15`)
-        let data = positionList = [ ...positionList,...result.content.data.page.result]
+        let result = await fetch.get(`/fe/api/position/find?page=${++currentPage}&pagesize=5`)
+        let data = positionList = [ ...positionList, ...result.data.result]
         let renderedpositionListTpl = template.render(positionListTpl, { data })
         $('#position-list').html(renderedpositionListTpl)
 

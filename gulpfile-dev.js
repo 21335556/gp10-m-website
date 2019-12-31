@@ -46,6 +46,13 @@ function webserver() {
           '^/api' : ''
         }
       }),
+      proxy('/fe/api', {     //代理到指定网页    api作为标记 一起拿到指定的网址上
+        target: 'http://localhost:3000',
+        changeOrigin: true,     // 解决访问域名不同，配置 布尔
+        pathRewrite: {
+          '^/api' : ''
+        }
+      }),
       // 自己做出接口
       proxy('/json',{
         target: 'http://localhost:9000',
