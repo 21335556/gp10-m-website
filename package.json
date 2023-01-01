@@ -17,7 +17,7 @@
     "@babel/plugin-transform-runtime": "^7.6.2",
     "@babel/preset-env": "^7.7.1",
     "@babel/runtime": "^7.7.2",
-    "babel-loader": "^8.0.6",
+    "babel-loader": "^8.3.0",
     "del": "^5.1.0",
     "gulp-sass": "^4.0.2",
     "gulp-server": "^0.1.0",
@@ -25,7 +25,7 @@
     "http-proxy-middleware": "^0.20.0",
     "json-server": "^0.15.1",
     "node-sass": "^4.13.0",
-    "webpack-stream": "^5.2.1",
+    "webpack-stream": "^7.0.0",
     "yo3": "^3.1.10"
   },
   "scripts": {
